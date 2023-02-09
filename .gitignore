@@ -1,0 +1,10 @@
+inst/doc
+/doc/
+/Meta/
+.Rproj.user
+data-raw/
+inst/
+.RData
+.Rhistory
+Weyrich23.Rproj
+README.Rmd

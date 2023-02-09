@@ -1,0 +1,123 @@
+---
+title: "analysis"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{analysis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+The scrit here provides all the code use for the analysis of the paper Weyrich et 
+al. 2023. A truncated dataset (data(full_300_ws_tables_1000) is provided to try
+the first part of the code. It consists of the first 1000 windows of the set, 
+The code using the "path_to_annotation_file" argument is not runnable as such.
+Please contact the corresponding author for the annotation file and the full 
+data set. 
+
+
+```{r setup, echo = FALSE, eval = FALSE}
+library(Weyrich23)
+library(dplyr)
+```
+
+## fit Negative-binomial model on full data set and subsets.
+
+```{r, find DMRs,  include =TRUE, eval = FALSE}
+data("full_300_ws_tables_1000") ## for access to the full dataset please contact the corresponding author. 
+
+set.seed(123) 
+describes_samples(full_300_ws_tables_1000) 
+
+
+## create sets and subsets
+model_1_one_fold <- prepare_balanced_k_set(k = 1, variable_to_balance = "group", tables =full_300_ws_tables)
+model_1_six_fold <- prepare_balanced_k_set(k = 6, variable_to_balance = "group", tables =full_300_ws_tables)
+
+## fit negative binomial on the windows
+model_1_one_fold <- add_DMRs_to_set(model_1_one_fold, 
+                                    ull_300_ws_tables, formula = "~ group + age_group", #
+                                    p_cut = 0.001) ##the cut on the FDR is done later
+# can change the fitting procedure...PQL is slighly more conservative but not any better in Cross-validation. 
+
+## extract  indexes to 
+index <- dplyr::bind_cols(model_1_one_fold$DMR_train) %>% 
+  dplyr::filter(coef == "groupLR" & FDR <= 0.05) %>% 
+  dplyr::pull(index) ## extract indexes of DMRS windows with FDR < 0.05
+
+## fit negative binomial on the windows in the subsets
+model_1_six_fold <- add_DMRs_to_set(model_1_six_fold, full_300_ws_tables, formula = "~ group + age_group", p_cut = 0.001, index = index) ## keep the result for indexes
+```
+
+
+## Part 1 DMR and robustness
+
+```{r, clean DMRs,  include =TRUE, warning=FALSE,  eval = FALSE}
+data("model_1_one_fold") ## results obtained with the full dataset (= analysis)
+data("model_1_six_fold") ## results obtained with the full subsets (= analysis)
+data("loc_table") 
+path_to_annotation_table <- system.file("extdata", "crocuta_liftoff_Hhy_ASM300989v1_addPromoter.gtf", package = "Weyrich23")
+
+DMR_group <- create_DMR_group_table(model_1_one_fold, model_1_six_fold, path_to_annotation_table, loc_table)
+
+## descriptive stats given in the manuscript 
+## Numbers given in text (results + abstract)
+## get basic stats
+length(unique(DMR_group$block)) ## n unique DMRs
+length(unique(DMR_group$block[DMR_group$annot_null])) # n non annot
+length(unique(DMR_group$block[!DMR_group$annot_null])) # m annot
+length(unique(DMR_group$block[!DMR_group$annot_null & DMR_group$coherent_block])) # n cohenrent and annot
+length(unique(DMR_group$block[DMR_group$coherent_block])) # n cohenrent 
+length(unique(DMR_group$block[!DMR_group$coherent_block])) # n incohenrent
+
+## get the total number of genes and their annotation 
+annotated_DMR_group <- create_annot_DMRs(DMR_group)
+length(unique(annotated_DMR_group$annot.gene_id)) ## total number of gene
+
+annot_type <- get_annotation_type(annotated_DMR_group)
+table(annot_type$annot.type)
+
+fig1(DMR_group)
+fig2(DMR_group)
+```
+
+## Part 2 Mitochondria and RNA
+
+```{r, mitochondria,  include =TRUE, warning=FALSE, eval=FALSE} 
+mito_table_DNA <- compute_mean_cpm_mito(full_300_ws_tables, path_to_annotation_table) ## big files you can access the computed table stored in data
+mito_table_RNA <- compute_mean_cpm_mito(RNA_table)
+# data(mito_table_DNA) ## computed table available with the pacakge
+# data(mito_table_RNA) ## computed table available with the pacakge
+
+
+mito_table_RNA %>%
+  group_by(group) %>% 
+  summarise(n = length(unique(ID))) ## get n = for RNA data
+
+### get a p-value for the delta between
+##get simple p-value for delta mito vs non mito and HR vs LR
+coin::wilcoxsign_test(mean_count_TMM ~ as.factor(type_of_genes), data = mito_table_DNA, distribution = "exact")  
+coin::wilcoxsign_test(mean_count_TMM ~ as.factor(type_of_genes), data = mito_table_RNA, distribution = "exact") ## paired wilocoxon for the mito vs non mito genes #since the samples are the same
+
+coin::wilcox_test(mean_count_TMM ~ as.factor(group), data = mito_table_DNA, distribution = "exact") 
+coin::wilcox_test(mean_count_TMM ~ as.factor(group), data = mito_table_RNA, distribution = "exact")# non-paired wilocoxon for the mito vs non mito genes since the samples are diff
+
+### get a p-value for the delta between
+fig3(mito_table_DNA, mito_table_RNA) 
+
+```
+
+## Part 3 RF
+
+```{r, rf,  include =TRUE, warning=FALSE, eval = FALSE}
+data(model_1_one_fold)
+data(DMR_group) 
+load("data-raw/full_300_ws_tables.rda")
+
+set.seed(123)
+oob_result <- estimate_oob(DMR_group, model_1_one_fold, full_300_ws_tables, 1000) ### loop on the function to have less variation due to the random nature of the analysis. // only matter for the small n. for the random draw (table in the sup)
+```
+
+## suplementary 
+```{r, sup,  include =TRUE, warning=FALSE, eval = FALSE}
+data(full_300_ws_tables_1000)
+fig_s2b(full_300_ws_tables_1000, save = FALSE)
+```

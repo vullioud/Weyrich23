@@ -1,8 +1,8 @@
-#' Create fig3
+#' Create Young / adult comparison table
 #'
-#' @param model_1 table with mean cpm for mito and non mito genes DNA
-#' @param path_to_annotation_table table with mean cpm for mito and non mito genes RNA
-#' @param full_tables otption to save the file, nee
+#' @param model_1 fitted model 1 on the full datasets 
+#' @param path_to_annotation_table annotation table 
+#' @param full_tables full 300 ws tables 
 #' @return A data frame with effect size for DMR position in both adult and young 
 #' @examples
 #' \dontrun{
@@ -13,7 +13,7 @@
 #' save(DMR_adult_young_comp, file = "data/DMR_adult_young_comp.rda")
 #' }
 #'
-refit_DMR_adult_young_separately <- function(model_1, full_table, path_to_annotation_table){
+refit_DMR_adult_young_separately <- function(model_1, full_tables, path_to_annotation_table){
   
   DMR_full <- reshape_DMR_table(set = model_1, coef = "groupLR", p_cut = 1, q_cut = 0.05)
   
@@ -30,10 +30,10 @@ refit_DMR_adult_young_separately <- function(model_1, full_table, path_to_annota
   
   
   # extract the read counts for the DMR
-  full_table$count_table <- full_table$count_table[indexes, ]
+  full_tables$count_table <- full_tables$count_table[indexes, ]
   
   ## fit for adult
-  full_300_ws_tables_adult <- full_table
+  full_300_ws_tables_adult <- full_tables
   full_300_ws_tables_adult$covariate_table <- full_300_ws_tables_adult$covariate_table[full_300_ws_tables_adult$covariate_table$age_group == "adult", ]
   
   
@@ -53,7 +53,7 @@ refit_DMR_adult_young_separately <- function(model_1, full_table, path_to_annota
   
   ## fit for yougnster
   
-  full_300_ws_tables_young <- full_table
+  full_300_ws_tables_young <- full_tables
   full_300_ws_tables_young$covariate_table <- full_300_ws_tables_young$covariate_table[full_300_ws_tables_young$covariate_table$age_group != "adult", ]
   
   

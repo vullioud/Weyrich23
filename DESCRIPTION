@@ -33,7 +33,8 @@ Imports:
     cutpointr, 
     tidyselect, 
     devtools,
-    ggplot2
+    ggplot2, 
+    cowplot
 Suggests:
     BSgenome,
     knitr,

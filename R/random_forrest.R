@@ -291,8 +291,8 @@ estimate_oob <- function(DMR_group, set, tables, n = 1000){
     out[[i]] <- fit_and_summarise_RF(DMR_group, set, tables)
   }
   dplyr::bind_rows(out) %>% 
-    dplyr::group_by(DMR) %>% 
-    dplyr::summarise(min = min(oob), 
-                     max = max(oob))
+    dplyr::group_by(.data$DMR) %>% 
+    dplyr::summarise(min = min(.data$oob), 
+                     max = max(.data$oob))
 }
 

@@ -284,15 +284,15 @@ fit_and_summarise_RF <- function(DMR_group, set, tables){
 #' @inheritParams fit_and_summarise_RF
 #' @param n number of bootstrap
 #' @return A tibble with the mean oob error accross bootstrap
-
 #' @export
 estimate_oob <- function(DMR_group, set, tables, n = 1000){
   out <- list()
   for(i in 1:n){
     out[[i]] <- fit_and_summarise_RF(DMR_group, set, tables)
   }
-  dplyr::bind_rows(out) %>%
-    dplyr::group_by(.data$DMR) %>%
-    dplyr::summarise(mean_oob = mean(.data$oob))
+  dplyr::bind_rows(out) %>% 
+    dplyr::group_by(DMR) %>% 
+    dplyr::summarise(min = min(oob), 
+                     max = max(oob))
 }
 

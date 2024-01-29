@@ -106,3 +106,13 @@ NULL
 #' A tibble with mean cpm for mito and non mito genes per ID
 "mito_table_RNA"
 NULL
+
+#' DMR_adult_young_comp
+#'
+#' table with the effect size in the main DMR for young and adult fitted separately
+#'
+#' @usage data(DMR_full_comp)
+#' @format `DMR_adult_young_comp`
+#' DMRs found in the full dataset with information about variance in the subsets in adult and young sepparetely 
+"DMR_adult_young_comp"
+NULL

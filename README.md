@@ -6,18 +6,20 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of Weyrich23 is to provide the code used for the manuscript
-XXX. For the full datasets please contact the corresponding author. To
-explore the script you can use the trimmed dataset available with the
-package. This package is not designed for general use.
+You will find in Weyrich23 the code used for the manuscript vullioud et
+al. 2024. Please contact the corresponding author to get access to the
+full dataset. To explore the script you can use the trimmed dataset
+available with the package. This package is not designed for general
+use.
 
 ## Installation
 
-You can install the development version of Weyrich23 like so:
+You can install the development version of Weyrich23 from
+[GitHub](https://github.com/) with:
 
 ``` r
-library(remotes)
-remotes::install_github("https://github.com/vullioud/Weyrich23", build_vignettes = TRUE)
+# install.packages("devtools")
+devtools::install_github("vullioud/Weyrich23")
 ```
 
 ## Analysis
@@ -28,7 +30,6 @@ as follow:
 ``` r
 library(Weyrich23)
 browseVignettes(package = "Weyrich23")
-#> No vignettes found by browseVignettes(package = "Weyrich23")
 ```
 
 The code for the functions used for the analysis is available can be

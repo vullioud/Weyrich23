@@ -120,4 +120,10 @@ oob_result <- estimate_oob(DMR_group, model_1_one_fold, full_300_ws_tables, 1000
 ```{r, sup,  include =TRUE, warning=FALSE, eval = FALSE}
 data(full_300_ws_tables_1000)
 fig_s2b(full_300_ws_tables_1000, save = FALSE)
+
+## comparison Young/adult fitted separately 
+data("DMR_group")
+data("DMR_adult_young_comp")
+data("DMR_bootstrap_adult_young")
+fig_s4(DMR_group, DMR_adult_young_comp, DMR_bootstrap_adult_young, save = FALSE)
 ```

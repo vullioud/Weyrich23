@@ -21,3 +21,11 @@ A plot
 \description{
 Create fig3
 }
+\examples{
+\dontrun{
+data("mito_table_DNA")
+data("mito_table_RNA")
+fig3(mito_table_DNA, mito_table_RNA, save = TRUE, filename = "figures/fig4_final.png", width = 8, height = 4, units = "in", dpi = 300)
+}
+
+}

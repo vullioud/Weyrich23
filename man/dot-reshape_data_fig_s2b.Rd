@@ -7,7 +7,7 @@
 .reshape_data_fig_s2b(tables)
 }
 \arguments{
-\item{tables}{ttable with read_counts and covariates}
+\item{tables}{table with read_counts and covariates}
 }
 \value{
 A tibble with data for fig.1

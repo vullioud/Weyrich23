@@ -19,3 +19,11 @@ A plot
 \description{
 Create fig1
 }
+\examples{
+\dontrun{
+data("DMR_group")
+ fig1(DMR_group, save = TRUE, filename = "figures/fig1_final.png", width = 12, height = 8, units = "in", dpi = 300, bg = "white")
+}
+
+
+}

@@ -10,7 +10,7 @@
 #' \dontrun{
 #' data("mito_table_DNA")
 #' data("mito_table_RNA")
-#' fig3(mito_table_DNA, mito_table_RNA, save = TRUE, filename = "figures/fig4_final.png", width = 10, height = 6, units = "in", dpi = 300)
+#' fig3(mito_table_DNA, mito_table_RNA, save = TRUE, filename = "figures/fig4_final.png", width = 8, height = 4, units = "in", dpi = 300)
 #' }
 #'
 fig3 <- function(mito_table_DNA, mito_table_RNA, save = FALSE, ...){
@@ -34,7 +34,7 @@ fig3 <- function(mito_table_DNA, mito_table_RNA, save = FALSE, ...){
     ggplot2::scale_x_discrete("Genes", labels = c("Mitochondrial", "Nuclear")) +
     ggplot2::scale_color_manual("", values = c("#E69F00", "#56B4E9"), labels = c("High-ranking","Low-ranking")) +
     ggplot2::theme_classic()+
-    ggplot2::theme(legend.position = c(0.8, 0.8), 
+    ggplot2::theme(legend.position = c(0.75, 0.8), 
                    legend.text =  ggplot2::element_text(size = 12),
                    axis.text =  ggplot2::element_text(size = 10), 
                    axis.title =  ggplot2::element_text(size = 12))

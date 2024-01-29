@@ -111,7 +111,7 @@ NULL
 #'
 #' table with the effect size in the main DMR for young and adult fitted separately
 #'
-#' @usage data(DMR_full_comp)
+#' @usage data(DMR_adult_young_comp)
 #' @format `DMR_adult_young_comp`
 #' DMRs found in the full dataset with information about variance in the subsets in adult and young sepparetely 
 "DMR_adult_young_comp"

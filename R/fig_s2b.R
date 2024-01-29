@@ -19,7 +19,7 @@
 #' @examples
 #' \dontrun{
 #' data(full_300_ws_tables_1000)
-#' fig_s2b(full_300_ws_tables_1000,save= TRUE, filename = "figures/fig_S2b_final.png", width = 6, height = 4, units = "in", dpi = 300)
+#' fig_s2b(full_300_ws_tables_1000,save= TRUE, filename = "figures/figS2b_final.png", width = 6, height = 4, units = "in", dpi = 300)
 #' }
 #' @return A plot
 #' @export

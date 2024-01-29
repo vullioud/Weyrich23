@@ -2,7 +2,7 @@
 ^\.Rproj\.user$
 ^source_data$
 ^data-raw$
-^LICENSE\.md$
 ^doc$
 ^Meta$
 ^README\.Rmd$
+^LICENSE\.md$

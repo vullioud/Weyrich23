@@ -116,3 +116,13 @@ NULL
 #' DMRs found in the full dataset with information about variance in the subsets in adult and young sepparetely 
 "DMR_adult_young_comp"
 NULL
+
+#' DMR_bootstrap_adult_young
+#'
+#' table with the effect size in 1000 random  windows for young and adult fitted separately
+#'
+#' @usage data(DMR_bootstrap_adult_young)
+#' @format `DMR_bootstrap_adult_young`
+#' coeficient of corellation in 100 bootsraped windows between adult and young sepparetely 
+"DMR_bootstrap_adult_young"
+NULL

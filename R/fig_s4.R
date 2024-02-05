@@ -11,7 +11,7 @@
 #'data("DMR_adult_young_comp")
 #'data("DMR_bootstrap_adult_young")
 #'fig_s4(DMR_group, DMR_adult_young_comp, DMR_bootstrap_adult_young, save = TRUE, filename = "figures/figS4_final.png", device = "png", width = 12, units = "in", height = 8, dpi = 300, bg = "white")
-#'fig_s4(DMR_group, DMR_adult_young_comp, DMR_bootstrap_adult_young, save = TRUE, filename = "figures/figS4_final.pdf", device = "pdf", width = 10, units = "in", height = 7, dpi = 300, bg = "white")
+#'fig_s4(DMR_group, DMR_adult_young_comp, DMR_bootstrap_adult_young, save = TRUE, filename = "figures/figS4_final.pdf", device = "pdf", width = 9, units = "in", height = 6, dpi = 300, bg = "white")
 
 #' }
 #' @return A plot
@@ -64,7 +64,7 @@ fig_s4 <- function(DMR_group, DMR_adult_young_comp, DMR_bootstrap_adult_young, s
   
   
   plot2 <- ggplot2::ggplot(DMR_comp) +
-    ggplot2::geom_point(ggplot2::aes(x = .data$logFC_young, y = .data$logFC_adult, col = .data$coherent_block)) +
+    ggplot2::geom_point(ggplot2::aes(x = .data$logFC_young, y = .data$logFC_adult, col = .data$coherent_block), size = 1) +
     ggplot2::scale_x_continuous("Effect size in cubs [logFC]", limits = c(-5, 6)) +
     ggplot2::scale_y_continuous("Effect size in adults [logFC]", limits = c(-5, 6)) +
     ggplot2::scale_color_manual("", labels = c("Excluded rankDMR", "Selected rankDMR"), values = c("#E69F00", "#56B4E9")) +

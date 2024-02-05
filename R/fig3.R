@@ -11,6 +11,7 @@
 #' data("mito_table_DNA")
 #' data("mito_table_RNA")
 #' fig3(mito_table_DNA, mito_table_RNA, save = TRUE, filename = "figures/fig4_final.png", width = 8, height = 4, units = "in", dpi = 300)
+#' fig3(mito_table_DNA, mito_table_RNA, save = TRUE, filename = "figures/fig4_final.pdf", width = 6.5, height = 3.2, units = "in", dpi = 300)
 #' }
 #'
 fig3 <- function(mito_table_DNA, mito_table_RNA, save = FALSE, ...){
@@ -22,9 +23,10 @@ fig3 <- function(mito_table_DNA, mito_table_RNA, save = FALSE, ...){
     ggplot2::scale_x_discrete("Genes", labels = c("Mitochondrial", "Nuclear")) +
     ggplot2::scale_color_manual("", values = c("#E69F00", "#56B4E9")) +
     ggplot2::theme_classic() +
-    ggplot2::theme(legend.position =  "none", 
-                   axis.text =  ggplot2::element_text(size = 10), 
-                   axis.title =  ggplot2::element_text(size = 12))
+    ggplot2::theme(text =  ggplot2::element_text(size = 8), 
+                   legend.position =  "none", 
+                   axis.text =  ggplot2::element_text(size = 8), 
+                   axis.title =  ggplot2::element_text(size = 8))
   
   ## plot RNA
   plot_RNA <- ggplot2::ggplot(mito_table_RNA) +
@@ -34,10 +36,11 @@ fig3 <- function(mito_table_DNA, mito_table_RNA, save = FALSE, ...){
     ggplot2::scale_x_discrete("Genes", labels = c("Mitochondrial", "Nuclear")) +
     ggplot2::scale_color_manual("", values = c("#E69F00", "#56B4E9"), labels = c("High-ranking","Low-ranking")) +
     ggplot2::theme_classic()+
-    ggplot2::theme(legend.position = c(0.75, 0.8), 
-                   legend.text =  ggplot2::element_text(size = 12),
-                   axis.text =  ggplot2::element_text(size = 10), 
-                   axis.title =  ggplot2::element_text(size = 12))
+    ggplot2::theme(text =  ggplot2::element_text(size = 8),
+                   legend.position = c(0.82, 0.8), 
+                   legend.text =  ggplot2::element_text(size = 8),
+                   axis.text =  ggplot2::element_text(size = 8), 
+                   axis.title =  ggplot2::element_text(size = 8))
   plot = cowplot::plot_grid(plot_DNA, plot_RNA, labels = c("a)", "b)"))
   if (save) {
     ggplot2::ggsave(plot, ...) ## filename = "fig/manuscript_fig4.png", width = 150, height = 75, units = "mm"

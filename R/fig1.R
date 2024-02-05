@@ -33,6 +33,7 @@
 #' \dontrun{
 #' data("DMR_group")
 #'  fig1(DMR_group, save = TRUE, filename = "figures/fig1_final.png", width = 12, height = 8, units = "in", dpi = 300, bg = "white")
+#'  fig1(DMR_group, save = TRUE, filename = "figures/fig1_final.pdf", width = 3.5, height = 2.2, units = "in", dpi = 300, bg = "white")
 #' }
 #' 
 #'
@@ -48,14 +49,15 @@ fig1 <- function(DMR_group, save = FALSE, ...){
     ggplot2::scale_y_continuous(expression(paste("Count of rankDMRs")), breaks = c(-25, 0, 25, 50, 75, 100),
                                 labels = c(25,0,25,50, 75, 100), limits = c(-40, 150)) +
     ggplot2::scale_fill_manual("", labels = c("Intragenic", "Intergenic"), values = c("#E69F00", "#56B4E9"))+
-    ggplot2::annotate(geom = "text", y = 50, x = 10, label= "Hypermethylated", size = 5) +
-    ggplot2::annotate(geom = "text", y = -20, x = 10, label= "Hypomethylated", size = 5) +
+    ggplot2::annotate(geom = "text", y = 50, x = 10, label= "Hypermethylated", size = 4) +
+    ggplot2::annotate(geom = "text", y = -20, x = 10, label= "Hypomethylated", size = 4) +
     ggplot2::theme_classic()  +
-    ggplot2::theme(axis.text.x= ggplot2::element_text(angle = 60, hjust = 1)) +
-    ggplot2::theme(legend.position = c(0.80, 0.80), 
-                   legend.text = ggplot2::element_text(size =15),
-                   axis.text = ggplot2::element_text(size = 12),
-                   axis.title = ggplot2::element_text(size = 15))
+    ggplot2::theme(axis.text.x= ggplot2::element_text(size= 8, angle = 60, hjust = 1)) +
+    ggplot2::theme(text = ggplot2::element_text(size = 8), 
+                   legend.position = c(0.80, 0.80), 
+                   legend.text = ggplot2::element_text(size =8),
+                   axis.text = ggplot2::element_text(size = 8),
+                   axis.title = ggplot2::element_text(size = 8))
   if(save){
     ggplot2::ggsave(plot, ...) 
   }

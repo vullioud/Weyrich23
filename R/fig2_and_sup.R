@@ -47,6 +47,8 @@
 #' data(DMR_group)
 #' fig2(DMR_group, save = TRUE, sup = FALSE, filename = "figures/fig2_final.png", width = 8, height = 8, units = "in", dpi = 300, bg = "white")
 #' fig2(DMR_group, save = TRUE, sup = TRUE, filename = "figures/figS3_final.png", width = 8, height = 14, units = "in", dpi = 300, bg = "white")
+#' fig2(DMR_group, save = TRUE, sup = FALSE, filename = "figures/fig2_final.pdf", width = 4, height = 4, units = "in", dpi = 300, bg = "white")
+#' fig2(DMR_group, save = TRUE, sup = TRUE, filename = "figures/figS3_final.pdf", width = 4, height = 8, units = "in", dpi = 300, bg = "white")
 #' }
 #' @export
 fig2 <- function(DMR_group, save =FALSE, sup= FALSE, ...){
@@ -67,7 +69,9 @@ fig2 <- function(DMR_group, save =FALSE, sup= FALSE, ...){
     ggplot2::scale_x_continuous("Effect size [logFC]") +
     ggplot2::scale_color_manual("", labels = c("Excluded", "Selected"), values = c("#E69F00", "#56B4E9")) +
     ggplot2::theme_classic() +
-    ggplot2::theme(legend.position = c(0.90, 0.1), 
+    ggplot2::theme(text = ggplot2::element_text(size= 8), 
+                   title = ggplot2::element_text(size= 8),
+                   legend.position = c(0.85, 0.15), 
                    legend.text =  ggplot2::element_text(size = 8))
   
   if(sup){

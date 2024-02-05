@@ -39,10 +39,10 @@ fig_s2b <- function(tables, save =FALSE, ...){
     ggplot2::scale_color_manual(name = "Age class", labels = c("Adult", "Cub"), values = c("#E69F00", "#56B4E9")) +
     ggplot2::scale_size(name = "Read counts") +
     ggplot2::theme_classic() +
-    ggplot2::theme(legend.text = ggplot2::element_text(size =10),
-                   legend.title = ggplot2::element_text(size = 12),
-                   axis.text = ggplot2::element_text(size = 10),
-                   axis.title = ggplot2::element_text(size = 12))
+    ggplot2::theme(legend.text = ggplot2::element_text(size =8),
+                   legend.title = ggplot2::element_text(size = 8),
+                   axis.text = ggplot2::element_text(size = 8),
+                   axis.title = ggplot2::element_text(size = 8))
   
   
   if(save){

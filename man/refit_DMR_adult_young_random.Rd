@@ -34,4 +34,5 @@ path_to_annotation_table <- "../../Downloads/Weyrich_EpiRank/crocuta_liftoff_Hhy
 DMR_bootstrap_adult_young  <- refit_DMR_adult_young_random(model_1_one_fold, full_300_ws_tables, path_to_annotation_table, n_boot = 1000)
 save(DMR_bootstrap_adult_young, file = "data/DMR_bootstrap_adult_young.rda")
 }
+
 }

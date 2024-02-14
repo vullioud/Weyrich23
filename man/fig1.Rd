@@ -23,6 +23,7 @@ Create fig1
 \dontrun{
 data("DMR_group")
  fig1(DMR_group, save = TRUE, filename = "figures/fig1_final.png", width = 12, height = 8, units = "in", dpi = 300, bg = "white")
+ fig1(DMR_group, save = TRUE, filename = "figures/fig1_final.pdf", width = 3.5, height = 2.2, units = "in", dpi = 300, bg = "white")
 }
 
 

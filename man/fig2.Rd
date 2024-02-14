@@ -26,5 +26,7 @@ Create fig2
 data(DMR_group)
 fig2(DMR_group, save = TRUE, sup = FALSE, filename = "figures/fig2_final.png", width = 8, height = 8, units = "in", dpi = 300, bg = "white")
 fig2(DMR_group, save = TRUE, sup = TRUE, filename = "figures/figS3_final.png", width = 8, height = 14, units = "in", dpi = 300, bg = "white")
+fig2(DMR_group, save = TRUE, sup = FALSE, filename = "figures/fig2_final.pdf", width = 4, height = 4, units = "in", dpi = 300, bg = "white")
+fig2(DMR_group, save = TRUE, sup = TRUE, filename = "figures/figS3_final.pdf", width = 4, height = 8, units = "in", dpi = 300, bg = "white")
 }
 }

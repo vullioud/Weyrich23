@@ -26,6 +26,7 @@ Create fig3
 data("mito_table_DNA")
 data("mito_table_RNA")
 fig3(mito_table_DNA, mito_table_RNA, save = TRUE, filename = "figures/fig4_final.png", width = 8, height = 4, units = "in", dpi = 300)
+fig3(mito_table_DNA, mito_table_RNA, save = TRUE, filename = "figures/fig4_final.pdf", width = 6.5, height = 3.2, units = "in", dpi = 300)
 }
 
 }

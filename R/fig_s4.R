@@ -48,7 +48,7 @@ fig_s4 <- function(DMR_group, DMR_adult_young_comp, DMR_bootstrap_adult_young, s
   
   ### for annotated
   plot1 <- ggplot2::ggplot(x) +
-    ggplot2::geom_text(ggplot2::aes(y = .data$logFC_adult, x = .data$logFC_young, col = .data$same_dir, label = .data$gene_name), angle = 0, size = 1) +
+    ggplot2::geom_text(ggplot2::aes(y = .data$logFC_adult, x = .data$logFC_young, col = .data$same_dir, label = .data$gene_name), angle = 0, size = 2.5) +
     ggplot2::scale_x_continuous("Effect size in cubs [logFC]", limits = c(-5, 6)) +
     ggplot2::scale_y_continuous("Effect size in adults [logFC]", limits = c(-5, 6)) +
     ggplot2::scale_color_manual("", labels = c("Incoherent effect direction", "Coherent effect direction"), values = c("#E69F00", "#56B4E9")) +

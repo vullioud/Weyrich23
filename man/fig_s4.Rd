@@ -34,6 +34,7 @@ Create fig_S4
 data("DMR_group")
 data("DMR_adult_young_comp")
 data("DMR_bootstrap_adult_young")
-fig_s4(DMR_group, DMR_adult_young_comp, DMR_bootstrap_adult_young, save = TRUE, filename = "figures/figs4_final2.png", my_plot, device = "png", width = 12, units = "in", height = 8, dpi = 300, bg = "white")
+fig_s4(DMR_group, DMR_adult_young_comp, DMR_bootstrap_adult_young, save = TRUE, filename = "figures/figS4_final.png", device = "png", width = 12, units = "in", height = 8, dpi = 300, bg = "white")
+fig_s4(DMR_group, DMR_adult_young_comp, DMR_bootstrap_adult_young, save = TRUE, filename = "figures/figS4_final.pdf", device = "pdf", width = 9, units = "in", height = 6, dpi = 300, bg = "white")
 }
 }

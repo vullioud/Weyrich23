@@ -11,7 +11,7 @@ In Weyrich23 you will find the code used for the manuscript entitled
 hyenas (Crocuta crocuta)” by [Vullioud et al. 2024](https://www.nature.com/articles/s42003-024-05926-y.pdf), Communications
 Biology. To explore the script you can use the trimmed dataset
 available with the package. This package is not designed for general
-use. The full datasets are available [here](https://doi.org/10.5061/dryad.m0cfxpp9b78). 
+use. The full datasets are available [here](https://datadryad.org/dataset/doi:10.5061/dryad.m0cfxpp9b). 
 Metadata are listed in Supplementary Material.
 
 
@@ -41,9 +41,6 @@ github under the /R files.
 ## Data availability
 
 The MBD-Seq data are uploaded to NCBI BioProject ID PRJNA1036526,
-including reference genome “crocuta.fasta”. The statistical analysis is
-available as a R-package “Weyrich23” at
-<https://github.com/vullioud/Weyrich23>. Novel annotation file and read
-count tables are available here
-<https://doi.org/10.5061/dryad.m0cfxpp9b78>. Metadata are listed in
+including reference genome “crocuta.fasta”. Novel annotation file and read
+count tables are available [here](https://datadryad.org/dataset/doi:10.5061/dryad.m0cfxpp9b). Metadata are listed in
 Supplementary Material.

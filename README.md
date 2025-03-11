@@ -9,10 +9,11 @@
 In Weyrich23 you will find the code used for the manuscript entitled
 “Epigenetic signatures of social status in female free-ranging spotted
 hyenas (Crocuta crocuta)” by Vullioud et al. 2024, Communications
-Biology. Please contact the corresponding author to get access to the
-full dataset. To explore the script you can use the trimmed dataset
+Biology. To explore the script you can use the trimmed dataset
 available with the package. This package is not designed for general
-use.
+use. The full datasets are available here: <https://doi.org/10.5061/dryad.m0cfxpp9b78>. 
+Metadata are listed in Supplementary Material.
+
 
 ## Installation
 

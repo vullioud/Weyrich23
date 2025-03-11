@@ -17,8 +17,7 @@ Metadata are listed in Supplementary Material.
 
 ## Installation
 
-You can install the development version of Weyrich23 from
-[GitHub](https://github.com/) with:
+You can install the development version of Weyrich23 from GitHub with:
 
 ``` r
 # install.packages("devtools")
